@@ -43,6 +43,7 @@ if (burger) {
 			headerNavMenu.classList.add("active")
 			burger.classList.add('active')
 			navigation.classList.remove("active")
+			document.body.classList.add("scroll-lock")
 		}
 	})
 }
