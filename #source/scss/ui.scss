@@ -186,6 +186,14 @@ body.scroll-lock {}
 .gray-slimes {
 	background-color: #F9F9F9;
 
+
+}
+
+.swiper-notification {
+	width: 0;
+	height: 0;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .gray-slimes.main-slimes__body {
