@@ -147,10 +147,9 @@ body.scroll-lock {}
 //==========================================================КЛАССЫ=ДЛЯ=ТЕКСТОВ=================================================================================================
 .main-title {
 	font-weight: 700;
-	font-size: 32px;
 	line-height: 138%;
 	color: #1A1A1A;
-
+	@include adaptiv-value("font-size", 32, 26, 1);
 }
 
 .btn-purple {
@@ -186,10 +185,61 @@ body.scroll-lock {}
 .gray-slimes {
 	background-color: #F9F9F9;
 
+	&-container {
+		position: relative;
 
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0px;
+
+			right: 30%;
+			transform: translate(-30%, 0%);
+			width: 210px;
+			height: 90px;
+
+			@media (max-width: $md1) {
+				width: 140px;
+				height: 60px;
+			}
+
+			background: url('../img/pageOne/main/adds/decore.png')0 0 / cover no-repeat;
+		}
+
+	}
 }
 
+.item-slides-two__other {
+	margin: 6px 0px 0px 0px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 121%;
+	color: #595959;
+	padding: 0px 15px 15px 15px;
+}
 
+.slider-copy {
+	@include adaptiv-value("margin-top", 80, 60, 1);
+}
+
+.slider-two__title {
+	margin: 0px 0px 50px 0px;
+}
+
+.white-link {
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 136%;
+	color: #FFFFFF;
+}
+
+.black-link {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 157%;
+	color: #A891FF;
+
+}
 
 
 //===============ОДИНАКОВЫЕ-БЛОКИ================================================================================================================================================

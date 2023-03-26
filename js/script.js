@@ -241,7 +241,7 @@ new Swiper('.slides__slider-two', {
 
 //Еще слайдер.. :(
 
-let el = new Swiper(".main-slimes__columns", {
+let elementSwiper = new Swiper(".main-slimes__columns", {
 	loop: true,
 	freeMode: true,
 	breakpoints: {
@@ -268,16 +268,20 @@ let el = new Swiper(".main-slimes__columns", {
 	},
 	spaceBetween: 15,
 })
-el.addEventListener('dblclick', function (e) {
-	autoplay.stop();
-});
-el.addEventListener('mouseover', function (e) {
-	autoplay.stop();
-});
+/*
+if (elementSwiper) {
+	elementSwiper.addEventListener('dblclick', function (e) {
+		autoplay.stop();
+	});
+	elementSwiper.addEventListener('mouseover', function (e) {
+		autoplay.stop();
+	});
 
-el.addEventListener('mouseout', function (e) {
-	tautoplay.start();
-});
+	elementSwiper.addEventListener('mouseout', function (e) {
+		tautoplay.start();
+	});
+}
+*/
 //При клике на колонку
 
 
@@ -313,3 +317,223 @@ if (colvo) {
 	})
 }
 */
+
+//
+
+/*
+new Swiper(".about-slime__item ", {
+
+})
+*/
+
+//Вставляем кнопку
+
+const about_slime__item = document.querySelector('.about-slime__item');
+
+if (about_slime__item) {
+	if (window.innerWidth <= 1024 && window.innerWidth >= 767) {
+		about_slime__item.insertAdjacentHTML(
+			"beforeend",
+			`<button class="item-about-slime__more">Читать полностью</button>`
+		)
+	}
+	about_slime__item.addEventListener("click", function (e) {
+		document.querySelector(".item-about-slime__text").classList.toggle("active")
+	})
+}
+
+
+
+//150 символов
+
+const textOverflow = document.querySelectorAll(".item-reviews__text p");
+/*
+if (textOverflow.length > 0) {
+	console.log(textOverflow);
+	textOverflow.forEach((item) => {
+		let symbols = item.textContent;
+		console.log(symbols);
+		if (symbols.length >= 100) {
+			item.classList.add("lock");
+
+		} else {
+			item.classList.remove("lock")
+		}
+	})
+}
+
+const columnsReviews = document.querySelectorAll(".reviews__column");
+
+if (columnsReviews.length > 0) {
+	columnsReviews.forEach((item) => {
+		textOverflow.forEach((text) => {
+			item.addEventListener("mouseenter", function (e) {
+				if (text.textContent.length >= 100) {
+					text.classList.remove("lock")
+				}
+			})
+			item.addEventListener("mouseleave", function (e) {
+				if (text.textContent.length >= 100) {
+					text.classList.add("lock")
+				}
+			})
+		})
+
+	})
+}
+*/
+/*
+if (textOverflow.length > 0) {
+	textOverflow.forEach((item) => {
+		item = item.join('')
+		if (item.textContent.length > 40) {
+			let text = text.slice(0, 40)
+			text.innerHTML = text;
+		}
+	})
+}
+*/
+//Скрываем колонки
+
+
+const lockColumns = document.querySelectorAll("lock-column");
+
+if (lockColumns.length > 0) {
+	lockColumns.forEach((lockColumn) => {
+		document.querySelector(".reviews__button").addEventListener("click", function (e) {
+			lockColumn.classList.toggle("lock-column")
+		})
+	})
+}
+
+const columnsReviews = document.querySelectorAll(".reviews__column");
+
+if (window.innerWidth <= 992) {
+	if (columnsReviews.length > 0) {
+		document.addEventListener("click", function (e) {
+			if (e.target.closest(".reviews__column")) {
+				let reviewsImages = document.querySelector(".reviews__images")
+				reviewsImages.classList.toggle("active")
+				let reviewstext = document.querySelector(".reviews__text")
+				reviewstext.classList.toggle("active")
+			}
+		})
+	}
+}
+
+//Фокус формам
+
+
+const inputsFocus = document.getElementsByName("input");
+if (inputsFocus.length > 0) {
+	inputsFocus.forEach((item) => {
+		let placehold = item.placeholder;
+		item.addEventListener("focus", function (e) {
+			item.placeholder = '';
+		})
+		item.addEventListener("blur", function (e) {
+			item.placeholder = placehold;
+		})
+	})
+}
+
+
+//checkbox
+
+
+const checkbox = document.querySelector(".form-contacts__checkbox");
+
+if (checkbox) {
+
+	if (checkbox.checked == true) {
+		document.querySelector(".form-contacts__block").classList.add("active")
+	}
+	const block = document.querySelector(".form-contacts__block");
+	block.addEventListener("click", function (e) {
+		if (block.classList.contains("active")) {
+			checkbox.checked == false;
+		} else {
+			checkbox.checked == true;
+		}
+		block.classList.toggle("active")
+	})
+
+}
+
+
+//Отправить форму
+
+const buttonContact = document.querySelector(".form-contacts__button");
+
+buttonContact.addEventListener("click", function (e) {
+	const block = document.querySelector(".form-contacts__block");
+	if (!block.classList.contains("active")) {
+		alert("Заполните все поля!")
+	}
+	e.preventDefault()
+})
+
+if (window.innerWidth <= 767) {
+	let submitContacts = document.querySelector(".form-contacts__button ")
+	const block = document.querySelector(".form-contacts__block");
+	submitContacts.before(block)
+	//document.querySelector(".contacts__body").append(block)
+}
+
+
+//Свайпер
+/*
+if (window.innerWidth <= 767) {
+	new Swiper('.slides__slider-two', {
+		slidesPerView: 4,
+		breakpoints: {
+
+			1600: {
+				slidesPerView: 4,
+			},
+			1152: {
+				slidesPerView: 3,
+			},
+			1024: {
+				slidesPerView: 2,
+			},
+			320: {
+				slidesPerView: 1,
+			}
+		},
+		spaceBetween: 15,
+		slidesPerGroup: 1,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+			dynamicBullets: true,
+		},
+		autoHeight: true,
+		navigation: {
+			prevEl: '.swiper-button-prev',
+			nextEl: '.swiper-button-next',
+
+		},
+	})
+}
+*/
+
+//Меняем расположение элементов в футере
+
+const buttonFooter = document.querySelector(".contacts-footer__button");
+const deliveryFooter = document.querySelector(".connection-footer__delivery")
+const connectionBody = document.querySelector(".connection-footer__body");
+const connectionIcons = document.querySelector(".connection-footer__icons")
+if (buttonFooter && deliveryFooter && connectionBody && connectionIcons) {
+	if (window.innerWidth <= 992) {
+		deliveryFooter.before(buttonFooter)
+		buttonFooter.before(connectionIcons)
+
+	}
+	if (window.innerWidth <= 767) {
+		buttonFooter.insertAdjacentHTML(
+			"afterend",
+			`<div class="footer__bd"></div>`
+		)
+	}
+}
