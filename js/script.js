@@ -289,7 +289,8 @@ new Swiper(".main-slimes__columns", {
 		},
 		320: {
 			slidesPerView: 1,
-		}
+		},
+
 	},
 	spaceBetween: 15,
 	slidesPerGroup: 1,
@@ -300,8 +301,8 @@ new Swiper(".main-slimes__columns", {
 	},
 	autoHeight: true,
 	navigation: {
-		prevEl: '.swiper-button-prev',
-		nextEl: '.swiper-button-next',
+		prevEl: '.swiper-button-previous',
+		nextEl: '.swiper-button-nextious',
 
 	},
 })

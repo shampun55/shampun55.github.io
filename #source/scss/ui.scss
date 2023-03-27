@@ -261,13 +261,101 @@ body.scroll-lock {}
 
 }
 
-.main-slimes__columns .swiper-pagination-bullets {
-	margin-bottom: -14px;
+@media (max-width: $md1) {
+	.main-slimes__columns .swiper-pagination-bullets {
+		margin-bottom: -14px;
+	}
+
+	.main-slimes__columns .swiper-pagination-bullet {
+		background-color: #000;
+	}
+
 }
 
-.main-slimes__columns .swiper-pagination-bullet {
-	background-color: #D7D7D7;
+.main-slimes__columns .swiper-button-previous {
+
+	@media(min-width: 1660px) {
+		margin-left: 20px;
+	}
+
+	.swiper-button-prev {
+		&:after {
+			color: #BCBCBC;
+		}
+
+		left: 100%;
+		position: relative;
+
+		@media (max-width: $md1) {
+			display: none;
+		}
+	}
+
+	@media (min-width: $md1) {
+		position: absolute;
+		cursor: pointer;
+		color: #BCBCBC;
+		z-index: 4;
+		left: -10px;
+		background-color: #fff;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		top: 50%;
+	}
+
+	@media (max-width: $md1) {
+		font-size: 20px;
+		color: #E026EE;
+		position: relative;
+		left: -40px;
+	}
+}
+
+.main-slimes__columns .swiper-button-nextious {
+	@media(min-width: 1660px) {
+		margin-right: 20px;
+	}
+
+	.swiper-button-next {
+		&:after {
+			color: #BCBCBC;
+		}
+
+		right: 50%;
+		position: relative;
+
+		@media (max-width: $md1) {
+			display: none;
+		}
+
+	}
+
+	@media (min-width: $md1) {
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		color: #BCBCBC;
+		z-index: 4;
+		right: -10px;
+		background-color: #fff;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+	}
+
+	@media (max-width: $md1) {
+		font-size: 20px;
+		color: #E026EE;
+		position: relative;
+		right: -40px;
+	}
 
 }
+
+
+
+
+
 
 //===============ОДИНАКОВЫЕ-БЛОКИ================================================================================================================================================
