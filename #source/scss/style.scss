@@ -607,6 +607,14 @@
 	align-items: center;
 	position: relative;
 	width: 120px;
+	margin: 0px auto;
+}
+
+.swiper-block-one {
+	display: flex;
+	align-items: center;
+	position: relative;
+	width: 120px;
 	margin: 40px auto;
 }
 
@@ -752,7 +760,7 @@
 	// .main__main-slimes
 
 	&__main-slimes {
-		margin: 50px 0px 0px 0px;
+		margin: 60px 0px 0px 0px;
 	}
 }
 
@@ -829,86 +837,97 @@
 
 	// .main-slimes__wrapper
 
-	&__wrapper {}
+	&__wrapper {
+		position: relative;
+	}
 
 	// .main-slimes__column
 
 	&__column {
 		position: relative;
+		z-index: 2;
+
+		@media (min-width: $md1) {
+			&:hover {
+				background: #FFFFFF;
+				box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+				backdrop-filter: blur(25px);
+				border-radius: 5px;
+
+			}
+
+			&:hover .item-main-slimes__text {
+				opacity: 1;
+				visibility: visible;
+				transition: all 0.8s ease 0s;
+				display: block;
+			}
+
+			&:hover .item-main-slimes__colvo {
+				opacity: 1;
+				visibility: visible;
+				transition: all 0.8s ease 0s;
+				display: block;
+			}
 
 
-		&:hover {
-			background: #FFFFFF;
-			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-			backdrop-filter: blur(25px);
-			border-radius: 5px;
+			&:hover .item-main-slimes__button {
+				opacity: 1;
+				visibility: visible;
+				transition: all 0.8s ease 0s;
 
+			}
+
+
+
+
+			&:hover .item-main-slimes__pluse-minus {
+				display: inline-flex;
+				visibility: visible;
+				opacity: 1;
+			}
+
+			&:hover .item-main-slimes__price {
+				margin: 30px 0px 20px 0px;
+			}
 		}
 
-		&:hover .item-main-slimes__text {
+
+
+		.item-main-slimes__colvo.active {
 			opacity: 1;
 			visibility: visible;
 			transition: all 0.8s ease 0s;
 			display: block;
 		}
 
-		&:hover .item-main-slimes__colvo {
+		.item-main-slimes__button.active {
 			opacity: 1;
 			visibility: visible;
 			transition: all 0.8s ease 0s;
-			display: block;
+			margin: 0px 0px 20px 0px;
 		}
 
-		&:hover .item-main-slimes__button {
-			opacity: 1;
-			visibility: visible;
-			transition: all 0.8s ease 0s;
+		.item-main-slimes__title.active {
 
-		}
-
-		&:hover .item-main-slimes__title {
-			height: 44px;
+			height: auto;
+			//	margin: 0px 0px 60px 0px;
 			overflow: visible;
 			transition: all 0.8s ease 0s;
 		}
 
-		&:hover .item-main-slimes__pluse-minus {
-			display: inline-flex;
-			visibility: visible;
+		.item-main-slimes__text.active {
 			opacity: 1;
+			visibility: visible;
+			transition: all 0.8s ease 0s;
+			display: block;
 		}
 
-		&:hover .item-main-slimes__price {
-			margin: 30px 0px 20px 0px;
+		&:hover .item-main-slimes__title {
+			height: auto;
+			overflow: visible;
+			transition: all 0.8s ease 0s;
 		}
-	}
-
-	.item-main-slimes__text.active {
-		opacity: 1;
-		visibility: visible;
-		transition: all 0.8s ease 0s;
-		display: block;
-	}
-
-	.item-main-slimes__colvo.active {
-		opacity: 1;
-		visibility: visible;
-		transition: all 0.8s ease 0s;
-		display: block;
-	}
-
-	.item-main-slimes__button.active {
-		opacity: 1;
-		visibility: visible;
-		transition: all 0.8s ease 0s;
-	}
-
-	.item-main-slimes__title.active {
-
-		height: 120px;
-		margin: 0px 0px 60px 0px;
-		overflow: visible;
-		transition: all 0.8s ease 0s;
 	}
 
 	// .main-slimes__action
@@ -948,6 +967,8 @@
 		display: grid;
 		justify-content: start;
 		padding: 15px;
+		grid-auto-flow: row;
+
 	}
 }
 
@@ -977,9 +998,12 @@
 		font-size: 15px;
 		line-height: 147%;
 		color: #1A1A1A;
-		height: 26px;
+
+
+		height: 20px;
 		transition: all 0.8s ease 0s;
 		overflow: hidden;
+
 	}
 
 	// .item-main-slimes__price
@@ -1004,6 +1028,9 @@
 		margin: 0px 10px 30px 0px;
 		text-decoration-line: none;
 
+		@media (max-width: $md1) {
+			margin: 0px 10px 10px 0px;
+		}
 
 
 		span {
@@ -1043,7 +1070,6 @@
 	// .item-main-slimes__button
 
 	&__button {
-		@media (min-width: $md3) {}
 
 		@media (max-width: $md3) {
 			span {
@@ -1083,8 +1109,12 @@
 		}
 
 		transition: all 0.8s ease 0s;
-		opacity: 0;
-		visibility: hidden;
+
+		@media (min-width: $md1) {
+			opacity: 0;
+			visibility: hidden;
+		}
+
 		font-weight: 500;
 		font-size: 12px;
 		line-height: 125%;
@@ -1225,7 +1255,7 @@
 		position: absolute;
 		top: 0px;
 		left: 39px;
-		z-index: 1;
+
 
 		span {
 			position: relative;

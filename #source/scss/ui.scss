@@ -241,5 +241,33 @@ body.scroll-lock {}
 
 }
 
+.main-slimes__columns .swiper-button-next {
+	&:after {
+		font-size: 20px;
+		color: #E026EE;
+		position: relative;
+		right: -40px;
+
+	}
+
+
+}
+
+.main-slimes__columns .swiper-button-prev:after {
+	font-size: 20px;
+	color: #E026EE;
+	position: relative;
+	left: -40px;
+
+}
+
+.main-slimes__columns .swiper-pagination-bullets {
+	margin-bottom: -14px;
+}
+
+.main-slimes__columns .swiper-pagination-bullet {
+	background-color: #D7D7D7;
+
+}
 
 //===============ОДИНАКОВЫЕ-БЛОКИ================================================================================================================================================

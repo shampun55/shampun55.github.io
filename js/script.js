@@ -240,7 +240,7 @@ new Swiper('.slides__slider-two', {
 })
 
 //Еще слайдер.. :(
-
+/*
 let elementSwiper = new Swiper(".main-slimes__columns", {
 	loop: true,
 	freeMode: true,
@@ -268,6 +268,44 @@ let elementSwiper = new Swiper(".main-slimes__columns", {
 	},
 	spaceBetween: 15,
 })
+*/
+
+
+new Swiper(".main-slimes__columns", {
+	slidesPerView: 4,
+	breakpoints: {
+
+		1600: {
+			slidesPerView: 4,
+		},
+		1152: {
+			slidesPerView: 3,
+		},
+		1024: {
+			slidesPerView: 2,
+		},
+		767: {
+			slidesPerView: 2,
+		},
+		320: {
+			slidesPerView: 1,
+		}
+	},
+	spaceBetween: 15,
+	slidesPerGroup: 1,
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+		dynamicBullets: true,
+	},
+	autoHeight: true,
+	navigation: {
+		prevEl: '.swiper-button-prev',
+		nextEl: '.swiper-button-next',
+
+	},
+})
+
 /*
 if (elementSwiper) {
 	elementSwiper.addEventListener('dblclick', function (e) {
@@ -287,15 +325,21 @@ if (elementSwiper) {
 
 const columnsInTovars = document.querySelectorAll(".main-slimes__columns");
 
-if (columnsInTovars.length > 0) {
-	for (let index = 0; index < columnsInTovars.length; index++) {
-		const element = columnsInTovars[index];
-		element.addEventListener("click", function (e) {
-			document.querySelector(".item-main-slimes__text").classList.toggle("active");
-			document.querySelector(".item-main-slimes__colvo").classList.toggle("active");
-			document.querySelector(".item-main-slimes__button").classList.toggle("active");
-			document.querySelector(".item-main-slimes__title").classList.toggle("active")
+if (window.innerWidth >= 1024 && window.innerWidth <= 1600) {
+	if (columnsInTovars.length > 0) {
+
+		document.addEventListener("click", function (e) {
+			if (e.target.closest(".main-slimes__column")) {
+				console.log('ghbdt');
+				if (e.target.closest(".item-main-slimes__button") || e.target.closest(".item-main-slimes__pluse-minus")) {
+					document.querySelector(".item-main-slimes__text").classList.toggle("active");
+					document.querySelector(".item-main-slimes__colvo").classList.toggle("active");
+					document.querySelector(".item-main-slimes__button").classList.toggle("active");
+					document.querySelector(".item-main-slimes__title").classList.toggle("active")
+				}
+			}
 		})
+
 	}
 }
 
