@@ -441,11 +441,12 @@ if (textOverflow.length > 0) {
 //Скрываем колонки
 
 
-const lockColumns = document.querySelectorAll("lock-column");
+const lockColumns = document.querySelectorAll(".lock-column");
 
 if (lockColumns.length > 0) {
 	lockColumns.forEach((lockColumn) => {
-		document.querySelector(".reviews__button").addEventListener("click", function (e) {
+		let reviewBtn = document.querySelector(".reviews__button")
+		reviewBtn.addEventListener("click", function (e) {
 			lockColumn.classList.toggle("lock-column")
 		})
 	})
@@ -509,59 +510,25 @@ if (checkbox) {
 //Отправить форму
 
 const buttonContact = document.querySelector(".form-contacts__button");
-
-buttonContact.addEventListener("click", function (e) {
-	const block = document.querySelector(".form-contacts__block");
-	if (!block.classList.contains("active")) {
-		alert("Заполните все поля!")
-	}
-	e.preventDefault()
-})
-
+if (buttonContact) {
+	buttonContact.addEventListener("click", function (e) {
+		const block = document.querySelector(".form-contacts__block");
+		if (!block.classList.contains("active")) {
+			alert("Заполните все поля!")
+		}
+		e.preventDefault()
+	})
+}
 if (window.innerWidth <= 767) {
 	let submitContacts = document.querySelector(".form-contacts__button ")
 	const block = document.querySelector(".form-contacts__block");
-	submitContacts.before(block)
+	if (block) {
+		submitContacts.before(block)
+	}
 	//document.querySelector(".contacts__body").append(block)
 }
 
 
-//Свайпер
-/*
-if (window.innerWidth <= 767) {
-	new Swiper('.slides__slider-two', {
-		slidesPerView: 4,
-		breakpoints: {
-
-			1600: {
-				slidesPerView: 4,
-			},
-			1152: {
-				slidesPerView: 3,
-			},
-			1024: {
-				slidesPerView: 2,
-			},
-			320: {
-				slidesPerView: 1,
-			}
-		},
-		spaceBetween: 15,
-		slidesPerGroup: 1,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-			dynamicBullets: true,
-		},
-		autoHeight: true,
-		navigation: {
-			prevEl: '.swiper-button-prev',
-			nextEl: '.swiper-button-next',
-
-		},
-	})
-}
-*/
 
 //Меняем расположение элементов в футере
 
@@ -580,5 +547,174 @@ if (buttonFooter && deliveryFooter && connectionBody && connectionIcons) {
 			"afterend",
 			`<div class="footer__bd"></div>`
 		)
+	}
+}
+
+
+//
+
+
+const deleteLinks = document.querySelectorAll(".delete-link span");
+
+if (deleteLinks.length > 0) {
+	deleteLinks.forEach((deleteLink) => {
+		deleteLink.addEventListener("click", function (e) {
+			document.querySelector(".delete-link").remove()
+			//console.log('привет');
+			const oneTab = document.querySelector('#oneTab');
+			if (oneTab) {
+				console.log(oneTab);
+				if (!document.querySelector(".delete-link")) {
+					oneTab.setAttribute('disabled', true)
+					oneTab.classList.add("lock-tab")
+				}
+			}
+			if (oneTab.hasAttribute("disabled")) {
+				const oneProduct = document.querySelector("#one-products");
+				oneProduct.classList.remove("active")
+			}
+		})
+
+
+	})
+}
+
+//табы
+
+
+const tabsItems = document.querySelectorAll(".tabs__item a");
+
+if (tabsItems.length > 0) {
+	for (let index = 0; index < tabsItems.length; index++) {
+		const element = tabsItems[index];
+		element.addEventListener("click", function (e) {
+			tabsItems.forEach((item) => {
+				item.classList.remove("active")
+			})
+			e.target.classList.add("active")
+			//	e.preventDefault()
+
+		})
+	}
+
+}
+
+//Еще свайпер.....
+
+new Swiper('.category-main__body', {
+	slidesPerView: 4,
+	breakpoints: {
+
+		1600: {
+			slidesPerView: 4,
+		},
+		1152: {
+			slidesPerView: 3,
+		},
+		1024: {
+			slidesPerView: 2,
+		},
+		320: {
+			slidesPerView: 1,
+		}
+	},
+	spaceBetween: 15,
+	slidesPerGroup: 1,
+	pagination: {
+		el: '.swiper-pagination',
+		clickable: true,
+		dynamicBullets: true,
+	},
+	autoHeight: true,
+	navigation: {
+		prevEl: '.swiper-button-prev',
+		nextEl: '.swiper-button-next',
+
+	},
+})
+
+
+
+
+//Лютый свайпер
+new Swiper(".product__slider", {
+	slidesPerView: 1,
+	direction: 'horizontal',
+	breakpoints: {
+		1152: {
+			direction: 'vertical',
+		}
+	},
+	thumbs: {
+		swiper: {
+			el: '.product__slider-mini',
+			slidesPerView: 5,
+			direction: 'horizontal',
+			breakpoints: {
+				1152: {
+					direction: 'vertical',
+				},
+				767: {
+					spaceBetween: 0
+				},
+				300: {
+					spaceBetween: 4
+				}
+			},
+
+			navigation: {
+				nextEl: '.swiper-button-next',
+				prevEl: '.swiper-button-prev',
+			},
+		},
+	},
+})
+/*
+if (window.innerWidth <= 425) {
+	new Swiper(".product__slider-mini", {
+		slidesPerView: 2,
+		direction: 'horizontal',
+		freeMode: true,
+	})
+}
+*/
+
+
+
+const miniSlider = document.querySelector(".product__slider-mini");
+const bigSlider = document.querySelector(".product__slider");
+
+if (miniSlider && bigSlider) {
+	if (window.innerWidth <= 1152) {
+		miniSlider.before(bigSlider)
+	}
+}
+
+//
+const info_product__button = document.querySelector(".info-product__button");
+
+if (window.innerWidth <= 767) {
+	if (info_product__button) {
+		info_product__button.addEventListener("click", function (e) {
+			const infoProductText = document.querySelector(".info-product__text");
+			if (infoProductText) {
+				infoProductText.classList.toggle("active")
+			}
+		})
+	}
+
+}
+if (window.innerWidth <= 767) {
+	const characteristicks__button = document.querySelector(".characteristicks__button");
+	const characteristicks__link = document.querySelector(".characteristicks__link");
+	if (characteristicks__button) {
+		characteristicks__button.addEventListener("click", function (e) {
+			document.querySelector(".characteristicks__items").classList.toggle("active")
+		})
+	}
+	if (characteristicks__link) {
+		characteristicks__link.addEventListener("click", function (e) {
+			document.querySelector(".characteristicks__text").classList.toggle("active")
+		})
 	}
 }
